@@ -1,0 +1,64 @@
+package mediumProblems;
+
+import java.math.BigInteger;
+import java.util.HashMap;
+import java.util.Map;
+public class driver {
+
+	public static void main(String[] args) {
+		//System.out.println(removeDigit("2998589353917872714814599237991174513476623756395992135212546127959342974628712329595771672911914471", '3'));
+		//System.out.println(removeDigit("123", '3'));
+		int list[] = {1,2,3};
+		System.out.println(twoSum(list, 4).toString());
+	}
+
+	private static String removeDigit(String number, char digit) {
+		        String newNumber = "0";
+		    	String temp = "0";
+		        for (int i = 0; i < number.length() ; i++){
+		        	if (number.charAt(i) == digit) {
+		        		if (i == 0) 
+		        			temp = number.replaceFirst(digit+"", "");
+		        		else if (i == number.length()-1) 
+		        			temp = number.substring(0, i);
+		        		else 
+		        			temp = number.substring(0, i) + number.substring(i+1, number.length());
+		        	BigInteger x = new BigInteger(newNumber);
+		        	BigInteger y = new BigInteger(temp);
+		        	if (y.max(x) == y)
+		    			newNumber = temp;
+		    
+		        	}
+	}
+		        return newNumber;
+
+}
+	private static int[] twoSum(int[] nums, int target) {
+        int length = nums.length;
+        Map <Integer, Integer> differenceMap = new HashMap<>();
+        int [] result = new int[2];
+        for (int i = 0 ; i < length; i++) {
+            if (!differenceMap.isEmpty() && differenceMap.containsKey(nums[i])){
+                result[0] = differenceMap.get(nums[i]);
+                result [1] = i;
+                return result;
+            }
+            else {
+                differenceMap.put(target-nums[i], i);
+            }
+        }
+        return result;
+    }
+	private static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+    	int result = 0;
+    	int powerOfTen = 0;
+        while (l1 != null && l2 != null){
+        	result += (l1.val+l2.val) * Math.pow(10, powerOfTen);
+        	l1 = l1.next;
+        	l2 = l2.next;
+        		
+        }
+        return l1;
+	}
+	
+}
