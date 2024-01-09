@@ -60,5 +60,28 @@ public class driver {
         }
         return l1;
 	}
-	
+	 private static boolean isPalindrome(int x) {
+		 if (x < 0) return false;
+		 else if (x/10 == 0) return true;
+		 else {
+			 boolean result = true;
+			 System.out.println(Math.log10(x));
+			 int topTensPlace = (int) Math.floor( Math.log10(x));
+			 System.out.println("Max tens place: " + topTensPlace);
+			 int bottomTensPlace = 0;
+			 while (topTensPlace != bottomTensPlace && topTensPlace-1 != bottomTensPlace && result == true) {
+				 int currentTop = (int) (x/(Math.pow(10, topTensPlace))% 10);
+				 
+				 System.out.println("Current Top: " + currentTop);
+				 int currentBottom = (int)(x / Math.pow(10, bottomTensPlace))%10;
+				 System.out.println("Current Bottom: " + currentBottom);
+				 if (currentTop == currentBottom) {
+					 topTensPlace -=1;
+					 bottomTensPlace +=1;
+					 
+				 }
+				 	else result = false;
+			 }
+			 return result;
+		 }
 }
