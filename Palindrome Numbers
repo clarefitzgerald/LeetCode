@@ -1,0 +1,24 @@
+class Solution {
+    public boolean isPalindrome(int x) {
+		 if (x < 0) return false;
+		 else if (x/10 == 0) return true;
+		 else {
+			 boolean result = true;
+			 int topTensPlace = (int) Math.floor( Math.log10(x));
+			 int bottomTensPlace = 0;
+			 while (topTensPlace != bottomTensPlace && result == true) {
+				 int currentTop = (int) (x/(Math.pow(10, topTensPlace))% 10);
+				 int currentBottom = (int)(x / Math.pow(10, bottomTensPlace))%10;
+				 if (currentTop == currentBottom) {
+                     if (topTensPlace - 1 == bottomTensPlace) return result;
+                     else {
+					 topTensPlace -=1;
+					 bottomTensPlace +=1;
+                     }
+				 }
+				 	else result = false;
+			 }
+			 return result;
+		 }
+    }
+}
